@@ -64,7 +64,7 @@
           "name": "template",
           "output": false,
           "outputPort": false,
-          "value": "'sub-01/anat/sub-01_T1w.nii.gz'",
+          "value": "'*'",
           "visible": true,
           "iterator": false
         },
@@ -142,7 +142,7 @@
           "name": "template_args",
           "output": false,
           "outputPort": false,
-          "value": "",
+          "value": "{'anat': [['subj_id', 'subj_id']], 'func': [['subj_id', 'subj_id']]}",
           "visible": false,
           "iterator": false
         },
@@ -157,6 +157,32 @@
           "outputPort": false,
           "value": "",
           "visible": false,
+          "iterator": false
+        },
+        {
+          "base": "field_template",
+          "editable": true,
+          "id": "f42a08ea-55b8-4091-9b87-58d518f6bb84",
+          "input": true,
+          "inputPort": "00c316db-c085-4dfe-b8a3-22e46b844992",
+          "name": "field_template",
+          "output": false,
+          "outputPort": false,
+          "value": "{'anat': '%s/anat/%s_T1w.nii.gz', 'func': '%s/func/%s_task-simon_run-1_bold.nii.gz'}",
+          "visible": true,
+          "iterator": false
+        },
+        {
+          "base": "subj_id",
+          "editable": true,
+          "id": "b75903e6-d8af-45ae-a8c5-9efd23146d29",
+          "input": true,
+          "inputPort": "69210e0d-9157-4db6-ba4a-2fde2da18b77",
+          "name": "subj_id",
+          "output": false,
+          "outputPort": false,
+          "value": "sub-01",
+          "visible": true,
           "iterator": false
         }
       ],
@@ -898,299 +924,6 @@
         ],
         "name": "io.DataSink",
         "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#datasink"
-      }
-    },
-    {
-      "category": [
-        "Nipype",
-        "spm",
-        "preprocess"
-      ],
-      "ports": [
-        {
-          "base": "target",
-          "editable": true,
-          "id": "26b8ae2f-bd31-4f27-88ad-98ca82567ef9",
-          "input": true,
-          "inputPort": "52a56904-785a-4dd3-8789-9ea0721493bf",
-          "name": "target",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": true,
-          "iterator": false
-        },
-        {
-          "base": "source",
-          "editable": true,
-          "id": "6cd1622f-7c8c-4ff4-9c46-c95ea5bffb2e",
-          "input": true,
-          "inputPort": "f55485bc-b1b7-41da-98b1-9f7302e0f631",
-          "name": "source",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": true,
-          "iterator": false
-        },
-        {
-          "base": "jobtype",
-          "editable": true,
-          "id": "994fbdb0-5351-498d-a098-95e9ede9e600",
-          "input": true,
-          "inputPort": "e2eb5147-e7ec-4f22-a7f8-a7760a6b9d72",
-          "name": "jobtype",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "apply_to_files",
-          "editable": true,
-          "id": "cb99ccac-2e9f-4c3d-9264-13a54af9cd3a",
-          "input": true,
-          "inputPort": "e340fdfa-c7a5-4666-963f-26fe9328365a",
-          "name": "apply_to_files",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "cost_function",
-          "editable": true,
-          "id": "4a6469af-8109-4884-85ce-d7f07c378d23",
-          "input": true,
-          "inputPort": "bea303bd-91c6-4a09-8752-f2d1dfb14676",
-          "name": "cost_function",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "fwhm",
-          "editable": true,
-          "id": "7ce586c0-4b8d-4fe4-b0ce-036afb781f9d",
-          "input": true,
-          "inputPort": "c44ea627-e4c2-46e6-a1d6-2f91398cfd1e",
-          "name": "fwhm",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "separation",
-          "editable": true,
-          "id": "16128cdf-827c-40ff-ac5c-2da38e490848",
-          "input": true,
-          "inputPort": "a1ad8ef8-ea90-4c91-bbfd-986bc3ec1d98",
-          "name": "separation",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "tolerance",
-          "editable": true,
-          "id": "00e37291-12e3-49ea-a399-f1416f73cf56",
-          "input": true,
-          "inputPort": "5bf0ebca-c977-4404-8c8a-501410a585f5",
-          "name": "tolerance",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "write_interp",
-          "editable": true,
-          "id": "6008a8be-1aac-47df-ba5d-af9d06fc9fda",
-          "input": true,
-          "inputPort": "4121d7d8-34e2-4ebf-b0a9-b2aa2682229c",
-          "name": "write_interp",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "write_wrap",
-          "editable": true,
-          "id": "fe02df14-8d4f-4ca4-911c-bf7a46150279",
-          "input": true,
-          "inputPort": "fad71a9a-3c8a-462f-b6e2-768889e51f62",
-          "name": "write_wrap",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "write_mask",
-          "editable": true,
-          "id": "1e7320cc-aa67-4afd-b48b-6540725edc91",
-          "input": true,
-          "inputPort": "85095f5d-dc3c-453e-ba96-692021d51ea6",
-          "name": "write_mask",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "out_prefix",
-          "editable": true,
-          "id": "0b30e1df-b94d-4da2-9c24-786e140e8fd6",
-          "input": true,
-          "inputPort": "0a1fbe29-0188-4e7e-bffe-22c82f767c5d",
-          "name": "out_prefix",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "matlab_cmd",
-          "editable": true,
-          "id": "8e6e627a-1990-45ef-980e-c091dc708e30",
-          "input": true,
-          "inputPort": "07e8a4e1-0553-45aa-91bd-14ef7d344539",
-          "name": "matlab_cmd",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "paths",
-          "editable": true,
-          "id": "5b09d326-6623-4eb7-bfbc-a17e1a7ebf91",
-          "input": true,
-          "inputPort": "93e1951c-fa8c-46a3-b60b-3b220db017c4",
-          "name": "paths",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "mfile",
-          "editable": true,
-          "id": "ff126947-227d-47a9-b46b-0719382f5418",
-          "input": true,
-          "inputPort": "83ac3349-0fd7-4039-9bf4-44654a770e36",
-          "name": "mfile",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "use_mcr",
-          "editable": true,
-          "id": "d303c28d-7505-427a-b2eb-cb206301ba3c",
-          "input": true,
-          "inputPort": "1babf61f-021b-4365-80b7-d07a6ba55833",
-          "name": "use_mcr",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "use_v8struct",
-          "editable": true,
-          "id": "b6f640b3-79b0-4fbf-9c61-94a364bf8b0a",
-          "input": true,
-          "inputPort": "f2c6b125-449a-469a-a998-a304b6c1ec2c",
-          "name": "use_v8struct",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "ignore_exception",
-          "editable": true,
-          "id": "ae38f140-d424-440b-bcbb-bce9c06b95e8",
-          "input": true,
-          "inputPort": "6aa65547-4921-432a-b026-c731438d3a20",
-          "name": "ignore_exception",
-          "output": false,
-          "outputPort": false,
-          "value": "",
-          "visible": false,
-          "iterator": false
-        },
-        {
-          "base": "coregistered_source",
-          "editable": false,
-          "id": "e298e87c-6d30-408c-9921-dbf08bf743fb",
-          "input": false,
-          "inputPort": false,
-          "name": "coregistered_source",
-          "output": true,
-          "outputPort": "fc1f7fb9-2329-4320-a767-30ba1c358fa3",
-          "value": "",
-          "visible": true,
-          "iterator": false
-        },
-        {
-          "base": "coregistered_files",
-          "editable": false,
-          "id": "fe62d1d6-24d0-4852-9e71-90dab1346778",
-          "input": false,
-          "inputPort": false,
-          "name": "coregistered_files",
-          "output": true,
-          "outputPort": "37326d6a-30b8-432f-a9fd-c665e8ccb174",
-          "value": "",
-          "visible": true,
-          "iterator": false
-        }
-      ],
-      "position": [
-        -486.9254307783719,
-        -62.763127599524644
-      ],
-      "title": {
-        "code": [
-          {
-            "language": "Nipype",
-            "comment": "Use spm_coreg for estimating cross-modality rigid body alignment",
-            "argument": {
-              "name": "spm.Coregister()",
-              "import": "import nipype.interfaces.spm as spm"
-            }
-          },
-          {
-            "language": "Docker",
-            "argument": {
-              "name": "Nipype, spm"
-            }
-          }
-        ],
-        "name": "spm.Coregister",
-        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.spm/preprocess.html#coregister"
       }
     }
   ],

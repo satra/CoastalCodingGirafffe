@@ -7,16 +7,18 @@ import nipype.pipeline as pe
 
 import nipype.interfaces.io as io
 import nipype.interfaces.fsl as fsl
-import nipype.interfaces.spm as spm
 
 #Generic datagrabber module that wraps around glob in an
-my_io_S3DataGrabber = pe.Node(io.S3DataGrabber(outfields=["outfiles"]), name = 'my_io_S3DataGrabber')
+my_io_S3DataGrabber = pe.Node(io.S3DataGrabber(infields=["field_template, subj_id"], outfields=["outfiles"]), name = 'my_io_S3DataGrabber')
 my_io_S3DataGrabber.inputs.bucket = 'openneuro'
 my_io_S3DataGrabber.inputs.sort_filelist = True
-my_io_S3DataGrabber.inputs.template = 'sub-01/anat/sub-01_T1w.nii.gz'
+my_io_S3DataGrabber.inputs.template = '*'
 my_io_S3DataGrabber.inputs.anon = True
 my_io_S3DataGrabber.inputs.bucket_path = 'ds000101/ds000101_R2.0.0/uncompressed/'
 my_io_S3DataGrabber.inputs.local_directory = '/tmp'
+my_io_S3DataGrabber.inputs.template_args = {'anat': [['subj_id', 'subj_id']], 'func': [['subj_id', 'subj_id']]}
+my_io_S3DataGrabber.inputs.field_template = {'anat': '%s/anat/%s_T1w.nii.gz', 'func': '%s/func/%s_task-simon_run-1_bold.nii.gz'}
+my_io_S3DataGrabber.inputs.subj_id = sub-01
 
 #Wraps command **bet**
 my_fsl_BET = pe.Node(interface = fsl.BET(), name='my_fsl_BET', iterfield = [''])
@@ -24,9 +26,6 @@ my_fsl_BET = pe.Node(interface = fsl.BET(), name='my_fsl_BET', iterfield = [''])
 #Generic datasink module to store structured outputs
 my_io_DataSink = pe.Node(interface = io.DataSink(), name='my_io_DataSink', iterfield = [''])
 my_io_DataSink.inputs.base_directory = '/tmp'
-
-#Use spm_coreg for estimating cross-modality rigid body alignment
-my_spm_Coregister = pe.Node(interface = spm.Coregister(), name='my_spm_Coregister', iterfield = [''])
 
 #Create a workflow to connect all those nodes
 analysisflow = nipype.Workflow('MyWorkflow')
